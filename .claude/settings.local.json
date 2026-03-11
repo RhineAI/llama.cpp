@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File \"C:/Projects/llama.cpp/.claude/notify.ps1\""
+          }
+        ]
+      }
+    ]
+  }
+}
