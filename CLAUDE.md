@@ -40,25 +40,25 @@ cmake --build build-x64-windows-msvc-release
 
 ## 推理使用方法
 
-本机模型路径：`D:/Development/models/gguf/`
+本机模型路径：`D:/models/gguf/`
 
 ### llama-cli（交互式对话）
 
 ```bash
 # CUDA GPU 推理，交互式多轮对话（默认模式）
 ./build-cuda/bin/Release/llama-cli.exe \
-  -m "D:/Development/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
+  -m "D:/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
   -ngl 99
 
 # 单轮对话模式（-st），跑完一轮自动退出，适合快速测试
 ./build-cuda/bin/Release/llama-cli.exe \
-  -m "D:/Development/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
+  -m "D:/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
   -p "Hello, who are you?" \
   -n 256 -ngl 99 -st
 
 # 指定系统提示词
 ./build-cuda/bin/Release/llama-cli.exe \
-  -m "D:/Development/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
+  -m "D:/models/gguf/Qwen3.5-0.8B-Q5_K_S.gguf" \
   -sys "You are a helpful assistant. Always respond in Chinese." \
   -ngl 99
 ```
