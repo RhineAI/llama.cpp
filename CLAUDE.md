@@ -162,6 +162,27 @@ tests/            C++ 单元测试（CTest）
 
 参考 [docs/development/HOWTO-add-model.md](docs/development/HOWTO-add-model.md)。关键步骤：在 `src/llama-arch.h/cpp` 定义架构 → 在 `src/llama-model.cpp` 实现图构建 → 使用 `convert_hf_to_gguf.py` 转换模型。
 
+## GGUF 检查工具
+
+仓库根目录的 `gguf_info.py` 用于打印 GGUF 文件的全面信息（依赖 `gguf` 和 `numpy`）。
+
+```bash
+# 基本用法：元数据 + tensor 汇总 + 模型架构
+uv run --no-project --with numpy --with gguf python gguf_info.py <file.gguf>
+
+# 显示完整 tensor 列表
+uv run --no-project --with numpy --with gguf python gguf_info.py <file.gguf> --tensors
+
+# 按量化类型统计 tensor 大小分布
+uv run --no-project --with numpy --with gguf python gguf_info.py <file.gguf> --tensor-stats
+
+# 只看特定元数据（按关键字过滤）
+uv run --no-project --with numpy --with gguf python gguf_info.py <file.gguf> --filter tokenizer
+
+# 跳过元数据，只看 tensor
+uv run --no-project --with numpy --with gguf python gguf_info.py <file.gguf> --no-meta --tensors
+```
+
 ## 重要注意事项
 
 - 修改 `ggml` 算子后，必须运行 `test-backend-ops` 验证后端一致性
